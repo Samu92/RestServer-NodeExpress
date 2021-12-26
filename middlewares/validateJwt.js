@@ -31,7 +31,7 @@ const validateJwt = async(req = request, res = response, next) => {
         req.user = user;
 
         next();
-    } catch (error) {       
+    } catch (error) {
         console.log(error);
         res.status(401).json({
             message: 'The token is not valid'
