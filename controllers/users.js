@@ -49,21 +49,13 @@ const deleteUser = async(req, res = response) => {
 
     //const user = await User.findByIdAndDelete(id);
     const user = await User.findByIdAndUpdate(id, {status: false});
-    const authenticatedUser = req.user;
 
     res.json(user);
-}
-
-const patchUser = (req, res = response) => {
-    res.json({
-        msg: 'patch API - controller'
-    });
 }
 
 module.exports = {
     getUsers,
     postUser,
     putUser,
-    deleteUser,
-    patchUser
+    deleteUser   
 }

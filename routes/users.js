@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { getUsers, putUser, postUser, deleteUser, patchUser } = require('../controllers/users');
+const { getUsers, putUser, postUser, deleteUser } = require('../controllers/users');
 
 const {
     validateFields, validateJwt, isAdminRole, hasRoles
@@ -36,7 +36,5 @@ router.delete('/:id', [
     check('id').custom(userExistsById),
     validateFields
 ], deleteUser);
-
-router.patch('/', patchUser);
 
 module.exports = router;
