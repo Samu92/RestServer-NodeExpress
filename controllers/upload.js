@@ -21,52 +21,6 @@ const loadFile = async(req, res = response) => {
     }
 }
 
-// const updateImage = async(req, res = response) => {
-//   try {
-//     const {id, collection} = req.params;
-
-//     let model;
-//     switch (collection) {
-//       case 'users':
-//           model = await User.findById(id);
-//           if(!model){
-//             return res.status(400).json({
-//               message: `The user with id ${id} does not exist`
-//             });
-//           }
-//         break; 
-//       case 'products':
-//         model = await Product.findById(id);
-//         if(!model){
-//           return res.status(400).json({
-//             message: `The product with id ${id} does not exist`
-//           });
-//         }
-//         break;
-//       default:
-//         return res.status(500).json({
-//           message: 'There was a problem updating the image'
-//         });
-//     }
-
-//     if(model.image){
-//       const imagePath = path.join(__dirname, '../uploads', collection, model.image);
-//       if(fileSystem.existsSync(imagePath)){
-//         fileSystem.unlinkSync(imagePath);
-//       }
-//     }
-  
-//     model.image = await uploadFile(req.files, undefined, collection);
-  
-//     await model.save();
-//     res.json(model);
-//   } catch (error) {
-//     res.status(400).json({
-//       error
-//     });
-//   }
-// }
-
 const updateCloudinaryImage = async(req, res = response) => {
   try {
     const {id, collection} = req.params;
@@ -162,7 +116,6 @@ const showImage = async(req, res = response) => {
 
 module.exports = {
     loadFile,
-    // updateImage,
     showImage,
     updateCloudinaryImage
 }
